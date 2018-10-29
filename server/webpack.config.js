@@ -7,6 +7,10 @@ const distPath = path.resolve(__dirname, './dist');
 
 const env = process.env.NODE_ENV !== 'production' ? 'development' : 'production';
 
+// https://github.com/TooTallNate/node-bindings/issues/42
+// externals - bindings...
+// node_modules/speaker/build/Release/binding.node를 server/build/ 로 복사해두면 빌드 실행시 잘 찾는다
+
 module.exports = {
   'entry': path.resolve(__dirname, 'src', 'index.ts'),
   'output': {
@@ -33,8 +37,9 @@ module.exports = {
   'node': {
     '__dirname': true,
   },
-  'externals': [
-  ],
+  'externals': {
+    bindings: 'require("bindings")',
+  },
   'devtool': 'source-map',
   'resolve': {
     'extensions': [
