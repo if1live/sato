@@ -25,6 +25,9 @@ module.exports = {
   },
   'plugins': [
     new webpack.ProgressPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.FLUENTFFMPEG_COV': false
+    }),
   ],
   'target': 'node',
   'node': {

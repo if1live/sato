@@ -33,7 +33,7 @@ declare module 'speaker' {
        *
        * @param flush Defaults to `true`.
        */
-      public close(flush: boolean);
+      public close(flush: boolean): any;
 
       /**
        * Returns the `MPG123_ENC_*` constant that corresponds to the given "format"
