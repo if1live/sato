@@ -1,9 +1,8 @@
-// TODO wrapper?
-const ytdl = require('ytdl-core');
+import ytdl from 'ytdl-core';
 
 export interface AudioInfo {
-  youtubeUrl: string,
-  data: any,
+  youtubeUrl: string;
+  data: any;
   audioUrl: string;
   audioBitrate: number;
   audioEncoding: string;
@@ -25,9 +24,9 @@ const getAudio = (info: any) => {
     .sort((a: any, b: any) => b.audioBitrate - a.audioBitrate);
 
   // highest bitrate
-  const audio = audioItems[0]
+  const audio = audioItems[0];
   return audio;
-}
+};
 
 const makeAudioInfo = (url: string, data: any, audio: any): AudioInfo => ({
   youtubeUrl: url,
@@ -42,7 +41,7 @@ export const fetchAudioInfo = async (url: string) => {
   const audio = getAudio(data);
   const info = makeAudioInfo(url, data, audio);
   return info;
-}
+};
 
 export const toJson = (x: AudioInfo) => {
   const { player_response } = x.data;

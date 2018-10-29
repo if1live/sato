@@ -66,5 +66,5 @@ app.get('/playlist/sync', (req, res) => {
   // TODO google drive
   res.send({
     ok: true,
-  })
+  });
 });

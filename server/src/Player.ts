@@ -1,11 +1,11 @@
-import { AudioStream } from "./AudioStream";
-import { delay } from "./helpers";
-import { PlayList } from "./PlayList";
-import { AudioInfo, getVideoDetails } from "./youtube";
+import { AudioStream } from './AudioStream';
+import { delay } from './helpers';
+import { PlayList } from './PlayList';
+import { AudioInfo, getVideoDetails } from './youtube';
 
 export class Player {
-  readonly audio: AudioStream;
-  readonly playlist: PlayList;
+  private readonly audio: AudioStream;
+  private readonly playlist: PlayList;
 
   public current?: AudioInfo;
 
@@ -17,7 +17,7 @@ export class Player {
       // console.log('Spawned FFmpeg with command: ' + commandLine);
     });
     audio.onError.subscribe((err) => {
-      console.error('FFmpeg error: ' + err.message)
+      console.error('FFmpeg error: ' + err.message);
     });
     audio.onProgress.subscribe((progress) => {
       // console.log(`Processing: ${progress.percent}% done`);
@@ -36,7 +36,7 @@ export class Player {
     });
   }
 
-  async play(info: AudioInfo) {
+  public async play(info: AudioInfo) {
     const details = getVideoDetails(info);
     console.log(`play: ${details.title}`);
 
@@ -45,7 +45,7 @@ export class Player {
     return true;
   }
 
-  async stop() {
+  public async stop() {
     this.current = undefined;
     await this.audio.stop();
   }

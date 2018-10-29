@@ -17,11 +17,11 @@ export class SpeakerProxy extends stream.Writable {
     this.speaker = new Speaker(opts);
   }
 
-  reset() {
+  public reset() {
     this.speaker = undefined;
   }
 
-  _write(
+  public  _write(
     chunk: any,
     encoding: string,
     callback: (error?: Error | null) => void,
@@ -31,7 +31,7 @@ export class SpeakerProxy extends stream.Writable {
     }
   }
 
-  close(flush: boolean) {
+  public close(flush: boolean) {
     if(this.speaker !== undefined) {
       this.speaker.close(flush);
     }
