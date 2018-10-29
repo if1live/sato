@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/if1live/sato#readme",
   "devDependencies": {
+    "@types/debug": "0.0.31",
     "@types/fluent-ffmpeg": "^2.1.8",
     "@types/jest": "^23.3.8",
     "jest": "^23.6.0",
