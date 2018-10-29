@@ -5,8 +5,14 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
+    "build:dev": "cross-env NODE_ENV=development npm run build",
+    "build:prod": "cross-env NODE_ENV=production npm run build",
     "start": "node dist/main.js",
-    "test": "jest",
+    "start:dev": "cross-env NODE_ENV=development npm run start",
+    "start:prod": "cross-env NODE_ENV=production npm run start",
+    "watch-webpack": "cross-env NODE_ENV=development webpack --watch",
+    "watch-start": "cross-env NODE_ENV=development nodemon --exec npm run start",
+    "test": "cross-env NODE_ENV=test jest",
     "lint": "tslint -c tslint.json -p tsconfig.json -t verbose"
   },
   "repository": {
@@ -25,6 +31,7 @@
     "@types/fluent-ffmpeg": "^2.1.8",
     "@types/jest": "^23.3.8",
     "jest": "^23.6.0",
+    "nodemon": "^1.18.5",
     "ts-jest": "^23.10.4",
     "ts-loader": "^5.2.2",
     "ts-node": "^7.0.1",
@@ -53,6 +60,7 @@
     }
   },
   "dependencies": {
+    "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "fluent-ffmpeg": "^2.1.2",
     "rxjs": "^6.3.3",
