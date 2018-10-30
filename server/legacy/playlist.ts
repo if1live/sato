@@ -1,7 +1,7 @@
 import { AudioInfo, fetchAudioInfo } from './youtube';
 import * as youtube from './youtube';
 
-export class PlayList {
+export class MyPlayList {
   private items: AudioInfo[] = [];
 
   public async enqueue(url: string) {
@@ -34,3 +34,4 @@ export class PlayList {
     return this.items.map(youtube.toJson);
   }
 }
+

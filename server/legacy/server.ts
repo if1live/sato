@@ -1,12 +1,12 @@
 import express from 'express';
-import { PlayList } from './PlayList';
+import { MyPlayList } from './playlist';
 import { AudioStream } from './AudioStream';
 import * as youtube from './youtube';
 import { Player } from './Player';
 
 export const app = express();
 
-const playlist = new PlayList();
+const playlist = new MyPlayList();
 
 // TODO 플레이리스트를 긁어서 제목같은거 저장해두기
 // TODO video url은 재생 직전에 획득하도록 고치기

@@ -1,15 +1,15 @@
 import { AudioStream } from './AudioStream';
 import { delay } from './helpers';
-import { PlayList } from './PlayList';
+import { MyPlayList } from './playlist';
 import { AudioInfo, getVideoDetails } from './youtube';
 
 export class Player {
   private readonly audio: AudioStream;
-  private readonly playlist: PlayList;
+  private readonly playlist: MyPlayList;
 
   public current?: AudioInfo;
 
-  constructor(audio: AudioStream, playlist: PlayList) {
+  constructor(audio: AudioStream, playlist: MyPlayList) {
     this.audio = audio;
     this.playlist = playlist;
 

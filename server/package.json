@@ -41,7 +41,7 @@
     "webpack-cli": "^3.1.2"
   },
   "jest": {
-    "rootDir": "./src",
+    "rootDir": ".",
     "testEnvironment": "node",
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
@@ -56,7 +56,7 @@
       "node"
     ],
     "moduleNameMapper": {
-      "@src/(.*)": "<rootDir>/$1"
+      "@src/(.*)": "<rootDir>/src/$1"
     }
   },
   "dependencies": {
