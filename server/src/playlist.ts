@@ -1,9 +1,24 @@
+import { videoInfo } from 'ytdl-core';
+import { fetchYoutubeInfo, toYoutubeUrl } from './helpers/youtube';
+
 export class PlayListItem {
   // youtube video id 쓰면 될듯
-  private id: string;
+  public readonly audioId: string;
+  private info?: videoInfo;
 
-  constructor(id: string) {
-    this.id = id;
+  constructor(audioId: string, info?: videoInfo) {
+    this.audioId = audioId;
+    this.info = info;
+  }
+
+  public async fetchInfo() {
+    // TODO local cache가 있으면 playlist 미리보기가 더 그럴싸할거다
+    if (this.info === undefined) {
+      const url = toYoutubeUrl(this.audioId);
+      const info = await fetchYoutubeInfo(url);
+      this.info = info;
+    }
+    return this.info;
   }
 }
 
@@ -20,6 +35,11 @@ export class PlayList {
 
   public get length() {
     return this.items.length;
+  }
+
+  public find(audioId: string) {
+    const founds = this.items.filter((x) => x.audioId === audioId);
+    return founds.length > 0 ? founds[0] : undefined;
   }
 }
 
@@ -100,3 +120,7 @@ export class RandomGenerator {
     }
   }
 }
+
+const defaultPlayList = new PlayList();
+
+export const getPlayList = () => defaultPlayList;

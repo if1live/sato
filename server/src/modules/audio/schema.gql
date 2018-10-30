@@ -1,0 +1,41 @@
+type Audio implements Node {
+  id: ID!
+  audioId: String
+  title: String
+}
+
+type PlayListItem implements Node {
+  id: ID!
+  audioId: String
+}
+
+type Viewer {
+  randomAudio: Audio
+}
+
+type Query {
+  viewer: Viewer
+}
+
+input PlayAudioInput {
+  clientMutationId: ID!
+  audioId: String!
+}
+
+type PlayAudioPayload {
+  clientMutationId: ID!
+  ok: Boolean
+}
+
+input StopAudioInput {
+  clientMutationId: ID!
+}
+
+type StopAudioPayload {
+  clientMutationId: ID!
+}
+
+type Mutation {
+  playAudio(input: PlayAudioInput): PlayAudioPayload
+  stopAudio(input: StopAudioInput): StopAudioPayload
+}

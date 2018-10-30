@@ -5,16 +5,16 @@ import { makeExecutableSchema } from 'graphql-tools';
 import * as glob from 'glob';
 import _ from 'lodash';
 
-import { resolvers } from '../modules/resolvers';
+import { resolvers as shared } from '../modules/shared/resolvers';
+import { resolvers as audio } from '../modules/audio/resolvers';
 
-const allResolvers = _.flatten([
-  [resolvers],
-]);
+const allResolvers = [shared, audio];
 
 const rootPath = path.join(__dirname, '../../src');
 
 const pathsToModules: string[] = [
-  path.join(rootPath, 'modules'),
+  path.join(rootPath, 'modules/shared'),
+  path.join(rootPath, 'modules/audio'),
 ];
 
 const typeDefsFileName = 'api.gql';
