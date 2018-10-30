@@ -1,16 +1,5 @@
-type Audio implements Node {
-  id: ID!
-  audioId: String
-  title: String
-}
-
-type PlayListItem implements Node {
-  id: ID!
-  audioId: String
-}
-
 type Viewer {
-  randomAudio: Audio
+  playlist: PlayList
 }
 
 type Query {

@@ -4,17 +4,8 @@ import * as player from '@src/player';
 import { getAudioFormat, getAudioUrl } from '@src/helpers/youtube';
 
 export const resolvers: ResolverMap = {
-  Audio: {
-
-  },
-  PlayListItem: {
-
-  },
   Viewer: {
-    randomAudio: (_, { }, { }) => {
-      // TODO
-      return null;
-    },
+    playlist: (_, { }, { }) => getPlayList(),
   },
   Query: {
     viewer: (_, { }, { }) => ({}),

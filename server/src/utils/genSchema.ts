@@ -7,14 +7,18 @@ import _ from 'lodash';
 
 import { resolvers as shared } from '../modules/shared/resolvers';
 import { resolvers as audio } from '../modules/audio/resolvers';
+import { resolvers as video } from '../modules/video/resolvers';
+import { resolvers as playlist } from '../modules/playlist/resolvers';
 
-const allResolvers = [shared, audio];
+const allResolvers = [shared, audio, video, playlist];
 
 const rootPath = path.join(__dirname, '../../src');
 
 const pathsToModules: string[] = [
   path.join(rootPath, 'modules/shared'),
   path.join(rootPath, 'modules/audio'),
+  path.join(rootPath, 'modules/video'),
+  path.join(rootPath, 'modules/playlist'),
 ];
 
 const typeDefsFileName = 'api.gql';

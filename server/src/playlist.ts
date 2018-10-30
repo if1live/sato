@@ -1,5 +1,6 @@
 import { videoInfo } from 'ytdl-core';
 import { fetchYoutubeInfo, toYoutubeUrl } from './helpers/youtube';
+import { toGlobalId } from 'graphql-relay';
 
 export class PlayListItem {
   // youtube video id 쓰면 될듯
@@ -20,10 +21,17 @@ export class PlayListItem {
     }
     return this.info;
   }
+
+  public get nodeId() {
+    return toGlobalId('PlayListItem', this.audioId);
+  }
 }
 
 export class PlayList {
   private items: PlayListItem[] = [];
+
+  // TODO 랜덤 규칙은 나중에 손볼지도?
+  private readonly rand = new RandomGenerator(4, 5);
 
   public push(item: PlayListItem) {
     this.items = [...this.items, item];
@@ -40,6 +48,18 @@ export class PlayList {
   public find(audioId: string) {
     const founds = this.items.filter((x) => x.audioId === audioId);
     return founds.length > 0 ? founds[0] : undefined;
+  }
+
+  public getItems() {
+    return [...this.items];
+  }
+
+  public get(idx: number) { return this.items[idx]; }
+
+  public random() {
+    const idx = this.rand.random({ min: 0, max: this.length - 1 });
+    const item = this.get(idx);
+    return item;
   }
 }
 

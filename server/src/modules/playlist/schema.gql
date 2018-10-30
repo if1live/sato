@@ -1,0 +1,28 @@
+type PlayList {
+  random: PlayListItem
+}
+
+type PlayListItem implements Node {
+  id: ID!
+  audioId: String
+  video: Video
+}
+
+type PlayListItemConnection {
+  edges: [PlayListItemEdge]
+  pageInfo: PageInfo!
+}
+
+type PlayListItemEdge {
+  cursor: String!
+  node: PlayListItem!
+}
+
+type Query {
+  search(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): PlayListItemConnection!
+}
