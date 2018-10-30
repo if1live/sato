@@ -1,6 +1,9 @@
 import { GraphQLServer, Options } from 'graphql-yoga';
 import { loadSchema } from './utils/genSchema';
 import { Context } from 'graphql-utils';
+import * as player from './player';
+import { getPlayList } from './playlist';
+import { getAudioFormat, getAudioUrl } from './helpers/youtube';
 
 export const createServer = () => {
   const schema = loadSchema() as any;
@@ -25,3 +28,14 @@ export const serverOption: Options = {
 };
 
 export const server = createServer();
+
+
+// 재생 끝나면 플레이리스트 적당히 다시 재생
+player.onEnded.subscribe(async () => {
+  const playlist = getPlayList();
+  const item = playlist.random();
+  const info = await item.fetchInfo();
+  const audio = getAudioFormat(info.formats);
+  const url = getAudioUrl(audio);
+  player.play(url);
+});

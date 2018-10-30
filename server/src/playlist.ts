@@ -27,6 +27,9 @@ export class PlayListItem {
   }
 }
 
+// TODO playlist에서 랜덤으로 고르는것보다
+// 플레이리스트를 섞어두고 순서대로 뽑는게 일반적인 구현인듯
+// 대부분의 미디어 플레이어 동작이 그러니까
 export class PlayList {
   private items: PlayListItem[] = [];
 

@@ -17,6 +17,7 @@ const main = async () => {
   // load play list
   // TODO 구글 스프레드시트 기반으로 바꾸기
   const text = fs.readFileSync('playlists/my.txt', { encoding: 'utf8' });
+  // const text = fs.readFileSync('playlists/dev.txt', { encoding: 'utf8' });
   const loader = new TextLoader(text);
   const playlist = getPlayList();
   for (const item of loader.load()) {
