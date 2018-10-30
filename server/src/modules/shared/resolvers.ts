@@ -3,6 +3,9 @@ import { fromGlobalId } from 'graphql-relay';
 import { getPlayList } from '@src/playlist';
 
 export const resolvers: ResolverMap = {
+  Viewer: {
+    playlist: (_, { }, { }) => getPlayList(),
+  },
   Node: {
     __resolveType: (parent, { }, { }) => {
       if (parent === undefined) {
@@ -14,6 +17,7 @@ export const resolvers: ResolverMap = {
     },
   },
   Query: {
+    viewer: (_, { }, { }) => ({}),
     node: (_, { id: nodeId }, { }) => {
       const { type, id } = fromGlobalId(nodeId);
       if (type === 'PlayListItem') {

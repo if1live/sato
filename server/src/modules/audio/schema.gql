@@ -1,11 +1,3 @@
-type Viewer {
-  playlist: PlayList
-}
-
-type Query {
-  viewer: Viewer
-}
-
 input PlayAudioInput {
   clientMutationId: ID!
   audioId: String!

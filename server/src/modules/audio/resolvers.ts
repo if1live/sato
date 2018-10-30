@@ -4,12 +4,6 @@ import * as player from '@src/player';
 import { getAudioFormat, getAudioUrl } from '@src/helpers/youtube';
 
 export const resolvers: ResolverMap = {
-  Viewer: {
-    playlist: (_, { }, { }) => getPlayList(),
-  },
-  Query: {
-    viewer: (_, { }, { }) => ({}),
-  },
   Mutation: {
     playAudio: async (_, { input }, { }) => {
       const { clientMutationId, audioId } = input;

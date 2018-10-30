@@ -4,8 +4,13 @@ interface Node {
   id: ID!
 }
 
+type Viewer {
+  playlist: PlayList
+}
+
 type Query {
   node(id: ID!): Node
+  viewer: Viewer
 }
 
 type PageInfo {
