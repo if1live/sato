@@ -2,14 +2,6 @@
 
 # execute in root
 
-cd client
-yarn run build
-cd ..
-
-cd server
-npm run build:prod
-cd ..
-
 mkdir -p output
 cp -r client/build output/client-build
 cp -r server/dist output

@@ -23,6 +23,10 @@ script:
   - cd client && bash ../scripts/ci-client.sh && cd -
   - cd server && bash ../scripts/ci-server.sh && cd -
 
+after_script:
+  - bash ./scripts/dist-copy.sh
+  - bash ./scripts/dist-archive.sh
+
 branches:
   only:
   - master
