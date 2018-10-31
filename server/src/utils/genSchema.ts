@@ -63,7 +63,16 @@ export const genSchema = () => {
 };
 
 export const loadSchema = () => {
-  const graphqlTypes = loadGraphqlTypes();
+  let graphqlTypes: string[];
+  if (process.env.NODE_ENV === 'production') {
+    // 배포의 경우 합쳐진 스키마를 쓰는게 편하다
+    // api.gql만 넣어도 되니까
+    const schema = fs.readFileSync(typeDefsFileName);
+    graphqlTypes = [schema.toString()];
+
+  } else {
+    graphqlTypes = loadGraphqlTypes();
+  }
 
   return makeExecutableSchema({
     typeDefs: mergeTypes(graphqlTypes),

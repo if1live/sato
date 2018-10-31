@@ -65,6 +65,7 @@ dist
 api.gql
 tmp
 build/
+output/
 
 # custom - client
 client/schema.json
