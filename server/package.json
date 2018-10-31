@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preinstall": "cd ../common && npm i && npm run build",
     "prebuild:prod": "npm run gen-schema-types",
     "build": "webpack",
     "build:dev": "cross-env NODE_ENV=development npm run build",
