@@ -8,7 +8,6 @@ import { PlayerEvent } from 'common/dist/models/PlayerEvents';
 
 
 export const setApp = (app: express.Application) => {
-  app.use(express.static('../client/build'));
   app.use(express.static('client-build'));
 
   app.use(sseWrapper);
