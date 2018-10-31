@@ -6,9 +6,9 @@ import { getAudioFormat, getAudioUrl } from '@src/helpers/youtube';
 export const resolvers: ResolverMap = {
   Mutation: {
     playAudio: async (_, { input }, { }) => {
-      const { clientMutationId, audioId } = input;
+      const { clientMutationId, videoId } = input;
       const playlist = getPlayList();
-      const item = playlist.find(audioId);
+      const item = playlist.find(videoId);
 
       if (item) {
         const info = await item.fetchInfo();

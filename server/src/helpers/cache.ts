@@ -1,5 +1,6 @@
 import { videoInfo } from 'ytdl-core';
 import * as fs from 'mz/fs';
+import { toYoutubeUrl, fetchYoutubeInfo, sliceInfo } from './youtube';
 
 // 플레이 리스트를 그럴싸하게 보여주려면 메타데이터를 알고있어야한다
 // 필요할때마다 메타데이터를 불러오면 느리다
@@ -43,3 +44,18 @@ export class Cache<T> {
   }
 }
 
+
+export class VideoInfoCache extends Cache<videoInfo>{
+  public async reload(id: string) {
+    const url = toYoutubeUrl(id);
+    const info = await fetchYoutubeInfo(url);
+
+    const sliced = sliceInfo(info);
+    await this.set(id, sliced);
+
+    return info;
+  }
+}
+
+const videoCache = new VideoInfoCache();
+export const getVideoCache = () => videoCache;

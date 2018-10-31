@@ -3,19 +3,21 @@ import { fetchYoutubeInfo, toYoutubeUrl } from './helpers/youtube';
 import { toGlobalId } from 'graphql-relay';
 
 export class PlayListItem {
+  public readonly type = 'PlayListItem';
+
   // youtube video id 쓰면 될듯
-  public readonly audioId: string;
+  public readonly videoId: string;
   private info?: videoInfo;
 
-  constructor(audioId: string, info?: videoInfo) {
-    this.audioId = audioId;
+  constructor(videoId: string, info?: videoInfo) {
+    this.videoId = videoId;
     this.info = info;
   }
 
   public async fetchInfo() {
     // TODO local cache가 있으면 playlist 미리보기가 더 그럴싸할거다
     if (this.info === undefined) {
-      const url = toYoutubeUrl(this.audioId);
+      const url = toYoutubeUrl(this.videoId);
       const info = await fetchYoutubeInfo(url);
       this.info = info;
     }
@@ -23,7 +25,7 @@ export class PlayListItem {
   }
 
   public get nodeId() {
-    return toGlobalId('PlayListItem', this.audioId);
+    return toGlobalId('PlayListItem', this.videoId);
   }
 }
 
@@ -48,8 +50,8 @@ export class PlayList {
     return this.items.length;
   }
 
-  public find(audioId: string) {
-    const founds = this.items.filter((x) => x.audioId === audioId);
+  public find(videoId: string) {
+    const founds = this.items.filter((x) => x.videoId === videoId);
     return founds.length > 0 ? founds[0] : undefined;
   }
 

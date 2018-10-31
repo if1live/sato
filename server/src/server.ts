@@ -1,9 +1,11 @@
 import { GraphQLServer, Options } from 'graphql-yoga';
 import { loadSchema } from './utils/genSchema';
-import { Context } from 'graphql-utils';
+import { Context, Loaders } from 'graphql-utils';
 import * as player from './player';
 import { getPlayList } from './playlist';
 import { getAudioFormat, getAudioUrl } from './helpers/youtube';
+import { VideoInfoLoader } from './loaders';
+
 
 export const createServer = () => {
   const schema = loadSchema() as any;
@@ -15,6 +17,9 @@ export const createServer = () => {
         url: request.protocol + '://' + request.get('host'),
         req: request,
         res: response,
+        loaders: {
+          videoInfo: new VideoInfoLoader(),
+        },
       };
     },
   });

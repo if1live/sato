@@ -1,6 +1,6 @@
 input PlayAudioInput {
   clientMutationId: ID!
-  audioId: String!
+  videoId: String!
 }
 
 type PlayAudioPayload {

@@ -10,7 +10,9 @@ export const resolvers: ResolverMap = {
   },
   PlayListItem: {
     id: (parent: PlayListItem, { }, { }) => parent.nodeId,
-    video: async (parent: PlayListItem, { }, { }) => await parent.fetchInfo(),
+    video: async (parent: PlayListItem, { }, { loaders }) => {
+      return await loaders.videoInfo.load(parent.videoId);
+    },
   },
   Query: {
     search: async (_, { }, { }) => {

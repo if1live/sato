@@ -5,7 +5,7 @@ query FindPlayListItem($id: ID!) {
   node(id: $id) {
     ... on PlayListItem {
       id
-      audioId
+      videoId
     }
   }
 }
@@ -29,7 +29,7 @@ query Search {
       cursor
       node {
         id
-        audioId
+        videoId
       }
     }
   }

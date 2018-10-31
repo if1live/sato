@@ -155,3 +155,17 @@ type VideoAuthor {
   channel_url: String!
   user_url: String!
 }
+
+input ReloadVideoInput {
+  clientMutationId: ID!
+  videoId: String
+}
+
+type ReloadVideoPayload {
+  clientMutationId: ID!
+  video: Video
+}
+
+type Mutation {
+  reloadVideo(input: ReloadVideoInput): ReloadVideoPayload
+}

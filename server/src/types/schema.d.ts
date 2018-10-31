@@ -58,7 +58,7 @@ declare namespace GQL {
   interface IPlayListItem {
     __typename: 'PlayListItem';
     id: string;
-    audioId: string | null;
+    videoId: string | null;
     video: IVideo | null;
   }
 
@@ -257,6 +257,7 @@ declare namespace GQL {
     __typename: 'Mutation';
     playAudio: IPlayAudioPayload | null;
     stopAudio: IStopAudioPayload | null;
+    reloadVideo: IReloadVideoPayload | null;
   }
 
   interface IPlayAudioOnMutationArguments {
@@ -267,9 +268,13 @@ declare namespace GQL {
     input?: IStopAudioInput | null;
   }
 
+  interface IReloadVideoOnMutationArguments {
+    input?: IReloadVideoInput | null;
+  }
+
   interface IPlayAudioInput {
     clientMutationId: string;
-    audioId: string;
+    videoId: string;
   }
 
   interface IPlayAudioPayload {
@@ -285,6 +290,17 @@ declare namespace GQL {
   interface IStopAudioPayload {
     __typename: 'StopAudioPayload';
     clientMutationId: string;
+  }
+
+  interface IReloadVideoInput {
+    clientMutationId: string;
+    videoId?: string | null;
+  }
+
+  interface IReloadVideoPayload {
+    __typename: 'ReloadVideoPayload';
+    clientMutationId: string;
+    video: IVideo | null;
   }
 }
 

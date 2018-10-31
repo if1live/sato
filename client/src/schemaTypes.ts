@@ -9,7 +9,7 @@ export interface FindPlayListItem_node_Video {}
 
 export interface FindPlayListItem_node_PlayListItem {
   id: string;
-  audioId: string | null;
+  videoId: string | null;
 }
 
 export type FindPlayListItem_node = FindPlayListItem_node_Video | FindPlayListItem_node_PlayListItem;
@@ -55,7 +55,7 @@ export interface FindVideoVariables {
 
 export interface Search_search_edges_node {
   id: string;
-  audioId: string | null;
+  videoId: string | null;
 }
 
 export interface Search_search_edges {

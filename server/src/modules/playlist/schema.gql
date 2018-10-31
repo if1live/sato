@@ -4,7 +4,7 @@ type PlayList {
 
 type PlayListItem implements Node {
   id: ID!
-  audioId: String
+  videoId: String
   video: Video
 }
 

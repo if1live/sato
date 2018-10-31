@@ -1,9 +1,15 @@
 import * as express from 'express';
+import { VideoInfoLoader } from '../loaders';
 
 export interface Context {
   url: string;
   req: express.Request;
   res: express.Response;
+  loaders: Loaders;
+}
+
+export interface Loaders {
+  videoInfo: VideoInfoLoader;
 }
 
 export type Resolver = (
