@@ -6,14 +6,14 @@ import registerServiceWorker from './registerServiceWorker';
 
 import { ApolloProvider } from 'react-apollo';
 import { client } from './client';
-import { findPlayListItem } from './modules/playlist';
+import { findPlayListItemQuery } from './modules/playlist';
 import { FindPlayListItemVariables } from './schemaTypes';
 
 // graphql sample
 const samplefunc = async () => {
   const id = 'UGxheUxpc3RJdGVtOkpPVXloRS05YkJz';
   const resp = await client.query({
-    query: findPlayListItem,
+    query: findPlayListItemQuery,
     variables: {
       id,
     } as FindPlayListItemVariables,

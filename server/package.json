@@ -38,6 +38,7 @@
     "@types/jest": "^23.3.8",
     "@types/js-base64": "^2.3.1",
     "@types/lodash": "^4.14.117",
+    "@types/mz": "0.0.32",
     "faker": "^4.1.0",
     "jest": "^23.6.0",
     "nodemon": "^1.18.5",
@@ -84,6 +85,7 @@
     "js-base64": "^2.4.9",
     "lodash": "^4.17.11",
     "merge-graphql-schemas": "^1.5.7",
+    "mz": "^2.7.0",
     "rxjs": "^6.3.3",
     "speaker": "^0.4.1",
     "ytdl-core": "^0.27.0"

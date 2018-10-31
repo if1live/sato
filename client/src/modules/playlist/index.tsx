@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const findPlayListItem = gql`
+export const findPlayListItemQuery = gql`
 query FindPlayListItem($id: ID!) {
   node(id: $id) {
     ... on PlayListItem {
@@ -11,7 +11,7 @@ query FindPlayListItem($id: ID!) {
 }
 `;
 
-export const findVideo = gql`
+export const findVideoQuery = gql`
 query FindVideo($id: ID!) {
   node(id: $id) {
     ... on Video {
@@ -21,3 +21,18 @@ query FindVideo($id: ID!) {
   }
 }
 `;
+
+export const searchQuery = gql`
+query Search {
+  search {
+    edges {
+      cursor
+      node {
+        id
+        audioId
+      }
+    }
+  }
+}
+`;
+

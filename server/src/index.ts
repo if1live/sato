@@ -1,17 +1,8 @@
-import { fetchYoutubeInfo, getAudioFormat, getAudioUrl, toYoutubeUrl } from './helpers/youtube';
-import { videoFormat } from 'ytdl-core';
-import { SpeakerProxy } from './player/SpeakerProxy';
-import { delay } from './helpers';
-import * as player from './player/player';
-import { first } from 'rxjs/operators';
+import * as fs from 'mz/fs';
 import { serverOption, server } from './server';
-import * as fs from 'fs';
 import { TextLoader, getPlayList } from './playlist';
 
-
 const port = 3100;
-
-const speaker = new SpeakerProxy();
 
 const main = async () => {
   // load play list

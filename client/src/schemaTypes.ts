@@ -49,6 +49,31 @@ export interface FindVideoVariables {
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL query operation: Search
+// ====================================================
+
+export interface Search_search_edges_node {
+  id: string;
+  audioId: string | null;
+}
+
+export interface Search_search_edges {
+  cursor: string;
+  node: Search_search_edges_node;
+}
+
+export interface Search_search {
+  edges: (Search_search_edges | null)[] | null;
+}
+
+export interface Search {
+  search: Search_search;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================

@@ -28,3 +28,15 @@ export const getAudioFormat = (formats: videoFormat[]) => {
 };
 
 export const getAudioUrl = (format: videoFormat) => format.url;
+
+// 불필요한 정보를 지우면 json 크기를 줄일수 있다
+export const sliceInfo = (info: videoInfo) => {
+  const clone = { ...info };
+  clone.formats = [];
+  clone.related_videos = [];
+  clone.player_response = undefined;
+  clone.fexp = [];
+  clone.fmt_list = [];
+  clone.watermark = [];
+  return clone;
+};
