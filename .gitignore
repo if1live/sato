@@ -64,9 +64,8 @@ typings/
 dist
 api.gql
 tmp
+build/
 
 # custom - client
 client/schema.json
 .cache
-
-
