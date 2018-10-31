@@ -2,6 +2,46 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: PlayAudio
+// ====================================================
+
+export interface PlayAudio_playAudio {
+  clientMutationId: string;
+  ok: boolean | null;
+}
+
+export interface PlayAudio {
+  playAudio: PlayAudio_playAudio | null;
+}
+
+export interface PlayAudioVariables {
+  videoId: string;
+  clientMutationId: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: StopAudio
+// ====================================================
+
+export interface StopAudio_stopAudio {
+  clientMutationId: string;
+}
+
+export interface StopAudio {
+  stopAudio: StopAudio_stopAudio | null;
+}
+
+export interface StopAudioVariables {
+  clientMutationId: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: FindPlayListItem
 // ====================================================
 
@@ -9,7 +49,7 @@ export interface FindPlayListItem_node_Video {}
 
 export interface FindPlayListItem_node_PlayListItem {
   id: string;
-  videoId: string | null;
+  videoId: string;
 }
 
 export type FindPlayListItem_node = FindPlayListItem_node_Video | FindPlayListItem_node_PlayListItem;
@@ -56,7 +96,7 @@ export interface FindVideoVariables {
 
 export interface Pagination_search_edges_node {
   id: string;
-  videoId: string | null;
+  videoId: string;
 }
 
 export interface Pagination_search_edges {
@@ -72,7 +112,7 @@ export interface Pagination_search_pageInfo {
 }
 
 export interface Pagination_search {
-  edges: (Pagination_search_edges | null)[] | null;
+  edges: Pagination_search_edges[];
   pageInfo: Pagination_search_pageInfo;
 }
 
@@ -85,46 +125,6 @@ export interface PaginationVariables {
   after?: string | null;
   last?: number | null;
   before?: string | null;
-}
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL mutation operation: PlayAudio
-// ====================================================
-
-export interface PlayAudio_playAudio {
-  clientMutationId: string;
-  ok: boolean | null;
-}
-
-export interface PlayAudio {
-  playAudio: PlayAudio_playAudio | null;
-}
-
-export interface PlayAudioVariables {
-  videoId: string;
-  clientMutationId: string;
-}
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL mutation operation: StopAudio
-// ====================================================
-
-export interface StopAudio_stopAudio {
-  clientMutationId: string;
-}
-
-export interface StopAudio {
-  stopAudio: StopAudio_stopAudio | null;
-}
-
-export interface StopAudioVariables {
-  clientMutationId: string;
 }
 
 /* tslint:disable */

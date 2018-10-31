@@ -58,7 +58,7 @@ declare namespace GQL {
   interface IPlayListItem {
     __typename: 'PlayListItem';
     id: string;
-    videoId: string | null;
+    videoId: string;
     video: IVideo | null;
   }
 
@@ -235,7 +235,7 @@ declare namespace GQL {
 
   interface IPlayListItemConnection {
     __typename: 'PlayListItemConnection';
-    edges: Array<IPlayListItemEdge | null> | null;
+    edges: Array<IPlayListItemEdge>;
     pageInfo: IPageInfo;
   }
 

@@ -1,12 +1,27 @@
 import * as React from 'react';
 import './App.css';
 
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import { ViewPagination } from './modules/playlist';
+
+import {
+  PlayListComponent,
+} from './components';
 
 class App extends React.Component {
   public render() {
     return (
       <div className="App">
+        <ViewPagination first={10}>
+          {(data) => {
+            const nodes = data.search.edges.map((x) => x.node);
+            return (
+              <PlayListComponent items={nodes} />
+            );
+          }}
+        </ViewPagination>
+
+        {/*
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
@@ -14,6 +29,7 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
+        */}
       </div>
     );
   }

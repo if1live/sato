@@ -4,12 +4,12 @@ type PlayList {
 
 type PlayListItem implements Node {
   id: ID!
-  videoId: String
+  videoId: String!
   video: Video
 }
 
 type PlayListItemConnection {
-  edges: [PlayListItemEdge]
+  edges: [PlayListItemEdge!]!
   pageInfo: PageInfo!
 }
 

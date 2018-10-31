@@ -1,4 +1,7 @@
 import gql from 'graphql-tag';
+import * as React from 'react';
+import { Pagination, PaginationVariables } from 'src/schemaTypes';
+import { Query } from 'react-apollo';
 
 export const findPlayListItemQuery = gql`
 query FindPlayListItem($id: ID!) {
@@ -43,27 +46,28 @@ query Pagination($first: Int, $after: String, $last: Int, $before: String) {
 }
 `;
 
-export const playAudioQuery = gql`
-mutation PlayAudio($videoId: String!, $clientMutationId: ID!) {
-  playAudio(input: {
-    clientMutationId: $clientMutationId,
-    videoId: $videoId,
-  }) {
-    clientMutationId,
-    ok,
+interface Props {
+  first?: number;
+  after?: string;
+  last?: number;
+  before?: string;
+  children: (data: Pagination) => JSX.Element | null;
+}
+
+export class ViewPagination extends React.PureComponent<Props> {
+  public render() {
+    const { children } = this.props;
+    return (
+      <Query<Pagination, PaginationVariables>
+        query={paginationQuery}
+        variables={this.props}>
+        {({ loading, error, data }) => {
+          if (loading) { return <div>loading...</div>; }
+          if (error) { return <div>error</div>; }
+          if (!data) { return <div>blank data</div>; }
+          return children(data);
+        }}
+      </Query>
+    );
   }
 }
-`;
-
-export const stopAudioQuery = gql`
-mutation StopAudio($clientMutationId: ID!) {
-  stopAudio(input: {
-    clientMutationId: $clientMutationId,
-  }) {
-    clientMutationId
-  }
-}
-`;
-
-
-
