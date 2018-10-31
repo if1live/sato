@@ -29,6 +29,7 @@
   "homepage": "https://github.com/if1live/sato#readme",
   "devDependencies": {
     "@gql2ts/types": "^1.9.0",
+    "@types/cors": "^2.8.4",
     "@types/debug": "0.0.31",
     "@types/express": "^4.16.0",
     "@types/faker": "^4.1.4",
@@ -74,8 +75,9 @@
     }
   },
   "dependencies": {
-    "common": "file:../common",
     "@gql2ts/from-schema": "^1.10.1",
+    "common": "file:../common",
+    "cors": "^2.8.4",
     "cross-env": "^5.2.0",
     "dataloader": "^1.4.0",
     "express": "^4.16.4",

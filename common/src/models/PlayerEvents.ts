@@ -8,34 +8,39 @@ export enum PlayerEventType {
   CodecData,
 }
 
-export interface BaseEvent {
-  type: PlayerEventType;
-}
 
-export interface StartEvent extends BaseEvent {
+
+export interface StartEvent {
   type: PlayerEventType.Start;
   commandLine: string;
 }
 
-export interface EndEvent extends BaseEvent {
+export interface EndEvent {
   type: PlayerEventType.End;
 }
 
-export interface ErrorEvent extends BaseEvent {
+export interface ErrorEvent {
   type: PlayerEventType.Error;
   error: Error;
 }
 
-export interface CodecDataEvent extends BaseEvent {
+export interface CodecDataEvent {
   type: PlayerEventType.CodecData;
   codec: any;
 }
 
-export interface ProgressEvent extends BaseEvent {
+export interface ProgressEvent {
   type: PlayerEventType.Progress;
   progress: Progress;
 }
 
+export type PlayerEvent = (
+  | StartEvent
+  | EndEvent
+  | ErrorEvent
+  | CodecDataEvent
+  | ProgressEvent
+);
 
 export const start = (commandLine: string): StartEvent => ({
   type: PlayerEventType.Start,
