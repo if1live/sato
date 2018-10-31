@@ -5,6 +5,7 @@ import * as player from './player';
 import { getPlayList } from './playlist';
 import { getAudioFormat, getAudioUrl } from './helpers/youtube';
 import { VideoInfoLoader } from './loaders';
+import { setApp } from './app';
 
 
 export const createServer = () => {
@@ -23,6 +24,7 @@ export const createServer = () => {
       };
     },
   });
+  setApp(svr.express);
   return svr;
 };
 
