@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd server
-npm run build:prod
+npm run build
 cd ..

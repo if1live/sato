@@ -62,7 +62,6 @@ typings/
 
 # custom
 dist
-api.gql
 tmp
 build/
 output/
