@@ -1,0 +1,25 @@
+language: node_js
+
+node_js:
+  - 'node'
+  - '10'
+
+sudo: true
+
+before_install:
+  - sudo apt-get install -y libasound2-dev
+
+install:
+  - cd server && npm install && cd -
+  - cd client && yarn install && cd -
+
+script:
+  - cd client && bash ../scripts/ci-client.sh && cd -
+  - cd server && bash ../scripts/ci-server.sh && cd -
+
+branches:
+  only:
+  - master
+
+notifications:
+  email: false

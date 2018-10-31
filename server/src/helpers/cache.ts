@@ -1,10 +1,16 @@
 import { videoInfo } from 'ytdl-core';
 import * as fs from 'mz/fs';
 import { toYoutubeUrl, fetchYoutubeInfo, sliceInfo } from './youtube';
+import { fchmodSync } from 'mz/fs';
 
 // 플레이 리스트를 그럴싸하게 보여주려면 메타데이터를 알고있어야한다
 // 필요할때마다 메타데이터를 불러오면 느리다
 // 이전에 읽어온건 캐시에 저장하자
+
+const prepare = () => {
+  fs.mkdirSync('.cache');
+};
+prepare();
 
 const toFilePath = (videoId: string) => {
   return `.cache/${videoId}.json`;
