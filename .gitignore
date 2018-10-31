@@ -63,3 +63,7 @@ typings/
 # custom
 dist
 api.gql
+tmp
+
+# custom - client
+client/schema.json
