@@ -1,7 +1,7 @@
 export {
   play,
-  onStarted,
-  onEnded,
-  onError,
-  onProgress,
+  start$,
+  end$,
+  error$,
+  progress$,
 } from './player';

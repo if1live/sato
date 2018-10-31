@@ -1,7 +1,5 @@
 import { Progress } from '@src/models/Progress';
-import { Subject } from 'rxjs';
 
-// https://github.com/taqm/express-sse-sample/blob/master/src/index.ts
 export enum PlayerEventType {
   Start,
   End,
@@ -16,6 +14,7 @@ export interface BaseEvent {
 
 export interface StartEvent extends BaseEvent {
   type: PlayerEventType.Start;
+  commandLine: string;
 }
 
 export interface EndEvent extends BaseEvent {
@@ -37,11 +36,9 @@ export interface ProgressEvent extends BaseEvent {
   progress: Progress;
 }
 
-export const source$ = new Subject<BaseEvent>();
-source$.subscribe(console.log);
-
-export const start = (): StartEvent => ({
+export const start = (commandLine: string): StartEvent => ({
   type: PlayerEventType.Start,
+  commandLine,
 });
 
 export const end = (): EndEvent => ({

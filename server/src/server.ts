@@ -38,7 +38,7 @@ export const server = createServer();
 
 
 // 재생 끝나면 플레이리스트 적당히 다시 재생
-player.onEnded.subscribe(async () => {
+player.end$.subscribe(async () => {
   const playlist = getPlayList();
   const item = playlist.random();
   const info = await item.fetchInfo();
