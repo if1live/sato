@@ -2,19 +2,19 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: PlayAudio
+// GraphQL mutation operation: PlayAudioMutation
 // ====================================================
 
-export interface PlayAudio_playAudio {
+export interface PlayAudioMutation_playAudio {
   clientMutationId: string;
   ok: boolean | null;
 }
 
-export interface PlayAudio {
-  playAudio: PlayAudio_playAudio | null;
+export interface PlayAudioMutation {
+  playAudio: PlayAudioMutation_playAudio | null;
 }
 
-export interface PlayAudioVariables {
+export interface PlayAudioMutationVariables {
   videoId: string;
   clientMutationId: string;
 }
@@ -23,18 +23,18 @@ export interface PlayAudioVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: StopAudio
+// GraphQL mutation operation: StopAudioMutation
 // ====================================================
 
-export interface StopAudio_stopAudio {
+export interface StopAudioMutation_stopAudio {
   clientMutationId: string;
 }
 
-export interface StopAudio {
-  stopAudio: StopAudio_stopAudio | null;
+export interface StopAudioMutation {
+  stopAudio: StopAudioMutation_stopAudio | null;
 }
 
-export interface StopAudioVariables {
+export interface StopAudioMutationVariables {
   clientMutationId: string;
 }
 

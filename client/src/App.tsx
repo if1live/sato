@@ -1,4 +1,5 @@
 import * as React from 'react';
+import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 
 // import logo from './logo.svg';
@@ -6,12 +7,14 @@ import { ViewPagination } from './modules/playlist';
 
 import {
   PlayListComponent,
+  ControlComponent,
 } from './components';
 
 class App extends React.Component {
   public render() {
     return (
       <div className="App">
+        <ControlComponent />
         <ViewPagination first={10}>
           {(data) => {
             const nodes = data.search.edges.map((x) => x.node);
