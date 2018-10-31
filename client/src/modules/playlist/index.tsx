@@ -34,6 +34,10 @@ query Pagination($first: Int, $after: String, $last: Int, $before: String) {
       node {
         id
         videoId
+        video {
+          title
+          length_seconds
+        }
       }
     }
     pageInfo {

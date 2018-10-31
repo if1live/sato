@@ -6,6 +6,11 @@ node_js:
 
 sudo: true
 
+cache:
+  directories:
+    - $HOME/server/node_modules
+    - $HOME/client/node_modules
+
 before_install:
   - sudo apt-get install -y libasound2-dev
   - npm install codecov -g
@@ -23,7 +28,9 @@ branches:
   - master
 
 after_success:
-  - cd server && codecov && cd -
+  - cd server &&  bash <(curl -s https://codecov.io/bash) -cF javascript && cd -
+  - cd client &&  bash <(curl -s https://codecov.io/bash) -cF javascript && cd -
 
 notifications:
   email: false
+

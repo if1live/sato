@@ -94,9 +94,15 @@ export interface FindVideoVariables {
 // GraphQL query operation: Pagination
 // ====================================================
 
+export interface Pagination_search_edges_node_video {
+  title: string;
+  length_seconds: string;
+}
+
 export interface Pagination_search_edges_node {
   id: string;
   videoId: string;
+  video: Pagination_search_edges_node_video | null;
 }
 
 export interface Pagination_search_edges {
