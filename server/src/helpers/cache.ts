@@ -8,7 +8,11 @@ import { fchmodSync } from 'mz/fs';
 // 이전에 읽어온건 캐시에 저장하자
 
 const prepare = () => {
-  fs.mkdirSync('.cache');
+  try {
+    fs.mkdirSync('.cache');
+  } catch (err) {
+    console.log('.cache already exist, skip');
+  }
 };
 prepare();
 
