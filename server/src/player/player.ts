@@ -1,9 +1,11 @@
 import { SpeakerProxy } from './SpeakerProxy';
 import ffmpeg, { FfmpegCommand } from 'fluent-ffmpeg';
-import { Progress } from '@src/models/Progress';
 import { Subject, merge } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as events from './events';
+import {
+  Progress,
+  PlayerEvents as events,
+} from 'common';
 
 type CodecData = any;
 

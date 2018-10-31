@@ -1,4 +1,4 @@
-import { Progress } from '@src/models/Progress';
+import { Progress } from './Progress';
 
 export enum PlayerEventType {
   Start,
@@ -35,6 +35,7 @@ export interface ProgressEvent extends BaseEvent {
   type: PlayerEventType.Progress;
   progress: Progress;
 }
+
 
 export const start = (commandLine: string): StartEvent => ({
   type: PlayerEventType.Start,

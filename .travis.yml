@@ -8,6 +8,7 @@ sudo: true
 
 cache:
   directories:
+    - $HOME/common/node_modules
     - $HOME/server/node_modules
     - $HOME/client/node_modules
 
@@ -16,10 +17,12 @@ before_install:
   - npm install codecov -g
 
 install:
+  - cd common && npm install && cd -
   - cd server && npm install && cd -
   - cd client && yarn install && cd -
 
 script:
+  - cd common && bash ../scripts/ci-common.sh && cd -
   - cd client && bash ../scripts/ci-client.sh && cd -
   - cd server && bash ../scripts/ci-server.sh && cd -
 
@@ -32,6 +35,7 @@ branches:
   - master
 
 after_success:
+  - cd common &&  bash <(curl -s https://codecov.io/bash) -cF javascript && cd -
   - cd server &&  bash <(curl -s https://codecov.io/bash) -cF javascript && cd -
   - cd client &&  bash <(curl -s https://codecov.io/bash) -cF javascript && cd -
 
