@@ -1,6 +1,11 @@
 import { videoInfo } from 'ytdl-core';
 import { fetchYoutubeInfo, toYoutubeUrl } from './helpers/youtube';
-import { toGlobalId } from 'graphql-relay';
+import {
+  toGlobalId,
+  connectionFromArray,
+  ConnectionArguments,
+} from 'graphql-relay';
+import _ from 'lodash';
 
 export class PlayListItem {
   public readonly type = 'PlayListItem';
@@ -29,14 +34,9 @@ export class PlayListItem {
   }
 }
 
-// TODO playlist에서 랜덤으로 고르는것보다
-// 플레이리스트를 섞어두고 순서대로 뽑는게 일반적인 구현인듯
-// 대부분의 미디어 플레이어 동작이 그러니까
 export class PlayList {
   private items: PlayListItem[] = [];
 
-  // TODO 랜덤 규칙은 나중에 손볼지도?
-  private readonly rand = new RandomGenerator(4, 5);
 
   public push(item: PlayListItem) {
     this.items = [...this.items, item];
@@ -55,16 +55,19 @@ export class PlayList {
     return founds.length > 0 ? founds[0] : undefined;
   }
 
-  public getItems() {
-    return [...this.items];
+  public connect(args: ConnectionArguments) {
+    return connectionFromArray(this.items, args);
   }
 
   public get(idx: number) { return this.items[idx]; }
 
   public random() {
-    const idx = this.rand.random({ min: 0, max: this.length - 1 });
-    const item = this.get(idx);
-    return item;
+    const r = Math.floor(Math.random() * this.length + 1);
+    return this.items[r];
+  }
+
+  public shuffle() {
+    this.items = _.shuffle(this.items);
   }
 }
 
@@ -102,47 +105,6 @@ export class TextLoader implements Loader {
 export class GoogleSpreadsheetLoader implements Loader {
   public load(): PlayListItem[] {
     throw new Error('Method not implemented.');
-  }
-}
-
-// 플레이리스트에서 같은 값이 연속으로 나오면 재미없을것이다
-// 이전에 나온 값을 될수있는한 피하는 랜덤함수
-export class RandomGenerator {
-  private queue: number[] = [];
-  private readonly queueSize: number;
-  private readonly retry: number;
-
-  constructor(queueSize: number, retry: number) {
-    this.queueSize = queueSize;
-    this.retry = retry;
-  }
-
-  public random(opts: { min?: number, max?: number }) {
-    const min = opts.min !== undefined ? opts.min : 0;
-    const max = opts.max !== undefined ? opts.max : Number.MAX_SAFE_INTEGER;
-
-    for (let i = 0; i < this.retry; i++) {
-      const v = this.pick(min, max);
-      const found = this.queue.indexOf(v) >= 0;
-      if (!found) {
-        this.enqueue(v);
-        return v;
-      }
-    }
-    // else...
-    return this.pick(min, max);
-  }
-
-  public pick(min: number, max: number) {
-    const r = Math.random();
-    return Math.floor(r * (max - min + 1)) + min;
-  }
-
-  private enqueue(v: number) {
-    this.queue.push(v);
-    if (this.queue.length > this.queueSize) {
-      this.queue.shift();
-    }
   }
 }
 

@@ -1,6 +1,7 @@
 import { ResolverMap } from 'graphql-utils';
-import { getPlayList, PlayListItem, PlayList, RandomGenerator } from '@src/playlist';
+import { getPlayList, PlayListItem, PlayList } from '@src/playlist';
 import { encodeCursor } from '@src/helpers';
+import { ConnectionArguments } from 'graphql-relay';
 
 
 
@@ -15,27 +16,16 @@ export const resolvers: ResolverMap = {
     },
   },
   Query: {
-    search: async (_, { }, { }) => {
-      // TODO 일단 전체 반환으로 구현. 나중에 재대로 된거로 고치기
+    search: async (_, { first, after, last, before }, { }) => {
+      const args: ConnectionArguments = {
+        first,
+        after,
+        last,
+        before,
+      };
       const playlist = getPlayList();
-      const items = playlist.getItems();
-      const edges = items.map((item, idx) => {
-        const cursor = encodeCursor(idx);
-        return {
-          node: item,
-          cursor,
-        };
-      });
-      const pageInfo = {
-        hasNextPage: false,
-        hasPreviousPage: false,
-        startCursor: 'TODO',
-        endCursor: 'TODO',
-      };
-      return {
-        edges,
-        pageInfo,
-      };
+      const connection = playlist.connect(args);
+      return connection;
     },
   },
 };

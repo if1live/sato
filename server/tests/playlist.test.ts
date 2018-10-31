@@ -1,7 +1,6 @@
 import {
   PlayList,
   PlayListItem,
-  RandomGenerator,
   TextLoader,
 } from '@src/playlist';
 import * as faker from 'faker';
@@ -25,19 +24,6 @@ describe('PlayList', () => {
 
     playlist.clear();
     expect(playlist.length).toEqual(0);
-  });
-});
-
-describe('RandomGenerator', () => {
-  test('random', () => {
-    for (let i = 0; i < 10; i++) {
-      const queueSize = 1;
-      const retry = 10;
-      const gen = new RandomGenerator(queueSize, retry);
-      const v1 = gen.random({ min: 0, max: 1 });
-      const v2 = gen.random({ min: 0, max: 1 });
-      expect(v1).not.toEqual(v2);
-    }
   });
 });
 
