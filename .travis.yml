@@ -8,9 +8,9 @@ sudo: true
 
 cache:
   directories:
-    - $HOME/common/node_modules
-    - $HOME/server/node_modules
-    - $HOME/client/node_modules
+    - $HOME/build/if1live/sato/common/node_modules
+    - $HOME/build/if1live/sato/server/node_modules
+    - $HOME/build/if1live/sato/client/node_modules
 
 before_install:
   - sudo apt-get install -y libasound2-dev
