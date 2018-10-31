@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd client
-yarn run build
+yarn run build:prod
 cd ..
