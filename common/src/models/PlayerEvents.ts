@@ -1,4 +1,5 @@
 import { Progress } from './Progress';
+import { CodecData } from './CodecData';
 
 export enum PlayerEventType {
   Start,
@@ -7,8 +8,6 @@ export enum PlayerEventType {
   Progress,
   CodecData,
 }
-
-
 
 export interface StartEvent {
   type: PlayerEventType.Start;
@@ -26,7 +25,7 @@ export interface ErrorEvent {
 
 export interface CodecDataEvent {
   type: PlayerEventType.CodecData;
-  codec: any;
+  codec: CodecData;
 }
 
 export interface ProgressEvent {
@@ -56,7 +55,7 @@ export const error = (e: Error): ErrorEvent => ({
   error: e,
 });
 
-export const codecData = (codec: any): CodecDataEvent => ({
+export const codecData = (codec: CodecData): CodecDataEvent => ({
   type: PlayerEventType.CodecData,
   codec,
 });

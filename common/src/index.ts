@@ -3,10 +3,14 @@ export function sum(a: number, b: number) {
   return a + b;
 }
 
-import { Progress } from './models/Progress';
+import {
+  Progress,
+  CodecData,
+} from './models';
 import * as PlayerEvents from './models/PlayerEvents';
 
 export {
   Progress,
+  CodecData,
   PlayerEvents,
 };

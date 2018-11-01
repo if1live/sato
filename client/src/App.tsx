@@ -8,12 +8,16 @@ import { ViewPagination } from './modules/playlist';
 import {
   PlayListComponent,
   ControlComponent,
+  ProgressBarComponent,
+  CodecComponent,
 } from './components';
 
 class App extends React.Component {
   public render() {
     return (
       <div className="App">
+        <ProgressBarComponent />
+        <CodecComponent />
         <ControlComponent />
         <ViewPagination first={10}>
           {(data) => {
