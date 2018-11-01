@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Pagination_search_edges_node } from 'src/schemaTypes';
 import { PlayListItemComponent } from './PlayListItemComponent';
+import { List } from 'semantic-ui-react';
 
 
 interface Props {
@@ -11,15 +12,13 @@ export class PlayListComponent extends React.Component<Props> {
   public render() {
     const { items } = this.props;
     return (
-      <ol>
+      <List divided verticalAlign="middle">
         {items.map((item, idx) => {
           return (
-            <li key={item.videoId}>
-              <PlayListItemComponent item={item} />
-            </li>
+            <PlayListItemComponent key={item.videoId} item={item} />
           );
         })}
-      </ol>
+      </List>
     );
   }
 }

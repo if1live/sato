@@ -1,6 +1,7 @@
 import { Pagination_search_edges_node } from 'src/schemaTypes';
 import * as React from 'react';
 import { secondsToDisplay } from 'src/helpers';
+import { List, Button } from 'semantic-ui-react';
 
 interface Props {
   item: Pagination_search_edges_node;
@@ -29,18 +30,33 @@ export class PlayListItemComponent extends React.Component<Props> {
       : '?:??';
   }
 
-  private onClick = () => {
-    // TODO 해당 음악 재생하기
-    console.log('todo');
+  private onPlayClick = () => {
+    console.log(`todo play ${this.videoId} audio`);
   }
 
+  private onYoutubeClick = () => {
+    const url = `https://www.youtube.com/watch?v=${this.videoId}`;
+    const win = window.open(url, '_blank');
+    if (win) { win.focus(); }
+  }
+
+
+
   public render() {
+    // 긴 문자열 대응하기*
     return (
-      <div onClick={this.onClick}>
-      {/* 긴 문자열 대응하기*/}
-        <span>{this.title}</span>
-        <span>{this.length}</span>
-      </div>
+      <List.Item>
+        <List.Content floated="right">
+          <Button.Group basic>
+            <Button onClick={this.onPlayClick} icon="play" />
+            <Button onClick={this.onYoutubeClick} icon="youtube" />
+          </Button.Group>
+        </List.Content>
+        <List.Content>
+          <List.Header>{this.title}</List.Header>
+          <span>{this.length}</span>
+        </List.Content>
+      </List.Item >
     );
   }
 }
