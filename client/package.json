@@ -19,7 +19,6 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
-    "preinstall": "cd ../common && npm i && npm run build",
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "build:dev": "cross-env NODE_ENV=development yarn run build",

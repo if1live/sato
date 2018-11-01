@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "cd ../common && yarn install && yarn run build",
     "prebuild:prod": "yarn run gen-schema-types",
     "build": "webpack",
     "build:dev": "cross-env NODE_ENV=development yarn run build",

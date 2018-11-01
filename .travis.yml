@@ -30,6 +30,9 @@ script:
   - cd server && bash ../scripts/ci-server.sh && cd -
 
 after_script:
+  - bash ./scripts/build-common.sh
+  - bash ./scripts/build-server.sh
+  - bash ./scripts/build-client.sh
   - bash ./scripts/dist-copy.sh
   - bash ./scripts/dist-archive.sh
 

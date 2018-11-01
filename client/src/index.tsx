@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { PlayerEvents as events } from 'common';
 
 import { ApolloProvider } from 'react-apollo';
-import { client, host, portProd } from './client';
+import { client, portProd } from './client';
 import { findPlayListItemQuery } from './modules/playlist';
 import { FindPlayListItemVariables } from './schemaTypes';
 
@@ -27,7 +27,8 @@ samplefunc();
 
 // sse
 // TODO host는
-const es = new EventSource(`${host}:${portProd}/sse`);
+const sseUrl = `${location.protocol}//${location.hostname}:${portProd}/sse`;
+const es = new EventSource(sseUrl);
 es.onmessage = (event) => {
   console.log('onmessage');
   console.log(event);
