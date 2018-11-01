@@ -14,11 +14,14 @@ cache:
 
 before_install:
   - sudo apt-get install -y libasound2-dev
-  - npm install codecov -g
+  - yarn global add codecov
+  - cd common && yarn link && cd -
+  - cd server && yarn link common && cd -
+  - cd client && yarn link common && cd -
 
 install:
-  - cd common && npm install && cd -
-  - cd server && npm install && cd -
+  - cd common && yarn install && cd -
+  - cd server && yarn install && cd -
   - cd client && yarn install && cd -
 
 script:

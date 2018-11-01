@@ -1,5 +1,5 @@
 #!/bin/bash
 
-npm run test -- --coverage --verbose --runInBand
-npm run build:prod
-npm run lint
+yarn run test -- --coverage --verbose --runInBand
+yarn run build:prod
+yarn run lint

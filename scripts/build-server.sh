@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd server
-npm run build
+yarn run build
 cd ..

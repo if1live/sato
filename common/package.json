@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "prepare": "npm run build",
+    "prepare": "yarn run build",
     "build": "tsc",
     "test": "jest",
     "lint": "tslint -c tslint.json -p tsconfig.json -t verbose"
