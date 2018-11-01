@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import {
   PlayAudioMutation,
   PlayAudioMutationVariables,
-} from '../../schemaTypes';
+} from '../schemaTypes';
 import { MutationFn, Mutation } from 'react-apollo';
 import * as React from 'react';
 

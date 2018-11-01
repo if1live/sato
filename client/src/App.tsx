@@ -1,8 +1,6 @@
 import * as React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import './App.css';
-
-// import logo from './logo.svg';
 import { ViewPagination } from './modules/playlist';
 
 import {
@@ -14,12 +12,14 @@ import {
 
 class App extends React.Component {
   public render() {
+    // TODO 플레이 리스트의 페이지네이션은 나중에 생각해도 된다
     return (
-      <div className="App">
+      <div>
+        <h1>sato</h1>
         <ProgressBarComponent />
         <CodecComponent />
         <ControlComponent />
-        <ViewPagination first={10}>
+        <ViewPagination first={10000}>
           {(data) => {
             const nodes = data.search.edges.map((x) => x.node);
             return (
@@ -27,16 +27,6 @@ class App extends React.Component {
             );
           }}
         </ViewPagination>
-
-        {/*
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        */}
       </div>
     );
   }

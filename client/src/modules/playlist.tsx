@@ -1,30 +1,7 @@
 import gql from 'graphql-tag';
-import * as React from 'react';
 import { Pagination, PaginationVariables } from 'src/schemaTypes';
+import * as React from 'react';
 import { Query } from 'react-apollo';
-
-export const findPlayListItemQuery = gql`
-query FindPlayListItem($id: ID!) {
-  node(id: $id) {
-    ... on PlayListItem {
-      id
-      videoId
-    }
-  }
-}
-`;
-
-export const findVideoQuery = gql`
-query FindVideo($id: ID!) {
-  node(id: $id) {
-    ... on Video {
-      id
-      video_id
-      title
-    }
-  }
-}
-`;
 
 export const paginationQuery = gql`
 query Pagination($first: Int, $after: String, $last: Int, $before: String) {
@@ -58,6 +35,8 @@ interface Props {
   children: (data: Pagination) => JSX.Element | null;
 }
 
+
+// TODO 이름 좋은거 뭐 없나
 export class ViewPagination extends React.PureComponent<Props> {
   public render() {
     const { children } = this.props;

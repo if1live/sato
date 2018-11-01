@@ -26,3 +26,15 @@ type Query {
     before: String
   ): PlayListItemConnection!
 }
+
+input ShuffleInput {
+  clientMutationId: ID!
+}
+
+type ShufflePayload {
+  clientMutationId: ID!
+}
+
+type Mutation {
+  shuffle(input: ShuffleInput!): ShufflePayload!
+}

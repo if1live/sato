@@ -1,6 +1,5 @@
 import { ResolverMap } from 'graphql-utils';
 import { getPlayList, PlayListItem, PlayList } from '@src/playlist';
-import { encodeCursor } from '@src/helpers';
 import { ConnectionArguments } from 'graphql-relay';
 
 
@@ -26,6 +25,16 @@ export const resolvers: ResolverMap = {
       const playlist = getPlayList();
       const connection = playlist.connect(args);
       return connection;
+    },
+  },
+  Mutation: {
+    shuffle: async (_, { input }, { }) => {
+      const { clientMutationId } = input;
+      const playlist = getPlayList();
+      playlist.shuffle();
+      return {
+        clientMutationId,
+      };
     },
   },
 };

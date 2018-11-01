@@ -136,6 +136,25 @@ export interface PaginationVariables {
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL mutation operation: ShuffleMutation
+// ====================================================
+
+export interface ShuffleMutation_shuffle {
+  clientMutationId: string;
+}
+
+export interface ShuffleMutation {
+  shuffle: ShuffleMutation_shuffle;
+}
+
+export interface ShuffleMutationVariables {
+  clientMutationId: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================

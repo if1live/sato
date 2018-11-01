@@ -258,6 +258,7 @@ declare namespace GQL {
     playAudio: IPlayAudioPayload | null;
     stopAudio: IStopAudioPayload | null;
     reloadVideo: IReloadVideoPayload | null;
+    shuffle: IShufflePayload;
   }
 
   interface IPlayAudioOnMutationArguments {
@@ -270,6 +271,10 @@ declare namespace GQL {
 
   interface IReloadVideoOnMutationArguments {
     input?: IReloadVideoInput | null;
+  }
+
+  interface IShuffleOnMutationArguments {
+    input: IShuffleInput;
   }
 
   interface IPlayAudioInput {
@@ -301,6 +306,15 @@ declare namespace GQL {
     __typename: 'ReloadVideoPayload';
     clientMutationId: string;
     video: IVideo | null;
+  }
+
+  interface IShuffleInput {
+    clientMutationId: string;
+  }
+
+  interface IShufflePayload {
+    __typename: 'ShufflePayload';
+    clientMutationId: string;
   }
 }
 

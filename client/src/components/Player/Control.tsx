@@ -1,44 +1,26 @@
 import * as React from 'react';
 import { Button } from 'semantic-ui-react';
-import { v4 as uuid } from 'uuid';
-import { PlayAudio } from 'src/modules/audio/playAudio';
-import { StopAudio } from 'src/modules/audio/stopAudio';
+import { PlayButton } from './PlayButton';
+import { StopButton } from './StopButton';
+import { ShuffleButton } from './ShuffleButton';
+import { ForwardButton } from './ForwardButton';
+import { BackwardButton } from './BackwardButton';
 
 export class ControlComponent extends React.Component {
-  private onRandom = () => {
-    console.log('random');
-  }
-
   public render() {
     return (
       <div>
-        <PlayAudio>
-          {({ playAudio }) => <Button onClick={async () => {
-            const videoId = 'WNk6tpHXpw4';
-            const result = await playAudio({
-              variables: {
-                clientMutationId: uuid(),
-                videoId,
-              },
-            });
-            console.log(result);
-          }}>play</Button>}
-        </PlayAudio>
+        <Button.Group icon>
+          <BackwardButton />
+          <PlayButton />
+          {/* TODO pause 필요할까?*/}
+          <StopButton />
+          <ForwardButton />
+        </Button.Group>
 
-        <StopAudio>
-          {({ stopAudio }) => <Button onClick={async () => {
-            const result = await stopAudio({
-              variables: {
-                clientMutationId: uuid(),
-              },
-            });
-            console.log(result);
-          }}>
-            stop
-          </Button>}
-        </StopAudio>
-
-        <Button onClick={this.onRandom}>random</Button>
+        <Button.Group icon floated="right">
+          <ShuffleButton />
+        </Button.Group>
       </div>
     );
   }

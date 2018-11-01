@@ -13,6 +13,7 @@ type Mutation {
   playAudio(input: PlayAudioInput): PlayAudioPayload
   stopAudio(input: StopAudioInput): StopAudioPayload
   reloadVideo(input: ReloadVideoInput): ReloadVideoPayload
+  shuffle(input: ShuffleInput!): ShufflePayload!
 }
 
 scalar Date
@@ -235,4 +236,12 @@ type PlayListItemConnection {
 type PlayListItemEdge {
   cursor: String!
   node: PlayListItem!
+}
+
+input ShuffleInput {
+  clientMutationId: ID!
+}
+
+type ShufflePayload {
+  clientMutationId: ID!
 }

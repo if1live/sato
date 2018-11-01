@@ -11,7 +11,7 @@ export class PlayListComponent extends React.Component<Props> {
   public render() {
     const { items } = this.props;
     return (
-      <ul>
+      <ol>
         {items.map((item, idx) => {
           return (
             <li key={item.videoId}>
@@ -19,7 +19,7 @@ export class PlayListComponent extends React.Component<Props> {
             </li>
           );
         })}
-      </ul>
+      </ol>
     );
   }
 }

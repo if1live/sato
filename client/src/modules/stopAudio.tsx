@@ -3,7 +3,7 @@ import { MutationFn, Mutation } from 'react-apollo';
 import {
   StopAudioMutation,
   StopAudioMutationVariables,
-} from '../../schemaTypes';
+} from '../schemaTypes';
 import * as React from 'react';
 
 
