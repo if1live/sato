@@ -5,21 +5,20 @@ import { StopButton } from './StopButton';
 import { ShuffleButton } from './ShuffleButton';
 import { ForwardButton } from './ForwardButton';
 import { BackwardButton } from './BackwardButton';
+import { SyncButton } from './SyncButton';
 
 export class ControlComponent extends React.Component {
   public render() {
     return (
       <div>
-        <Button.Group icon>
+        <Button.Group icon widths="6">
+          <ShuffleButton />
           <BackwardButton />
           <PlayButton />
           {/* TODO pause 필요할까?*/}
           <StopButton />
           <ForwardButton />
-        </Button.Group>
-
-        <Button.Group icon floated="right">
-          <ShuffleButton />
+          <SyncButton />
         </Button.Group>
       </div>
     );

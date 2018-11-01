@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Progress as ProgressBar } from 'semantic-ui-react';
 import { progress$ } from 'src/helpers/sse';
 import { Progress } from 'common';
 import { Subscription } from 'rxjs';
@@ -45,10 +46,12 @@ export class ProgressBarComponent extends React.Component<Props, State> {
     const timemark = progress ? progress.timemark : '00:00.00';
 
     return (
-      <ul>
-        <li>{percent}</li>
-        <li>{timemark}</li>
-      </ul>
+      <div>
+        <ProgressBar
+          percent={percent}
+          label={timemark}
+        />
+      </div>
     );
   }
 }

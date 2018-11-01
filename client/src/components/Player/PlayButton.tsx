@@ -1,7 +1,7 @@
 import { PlayAudio } from 'src/modules/playAudio';
 import * as React from 'react';
 import { v4 as uuid } from 'uuid';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 export class PlayButton extends React.PureComponent {
   public render() {
@@ -9,7 +9,7 @@ export class PlayButton extends React.PureComponent {
       <PlayAudio>
         {({ playAudio }) =>
           <Button
-            icon
+            icon="play"
             primary
             onClick={async () => {
               // TODO 마지막 재생지점은 서버가 기억하는게 나을거같다
@@ -21,9 +21,8 @@ export class PlayButton extends React.PureComponent {
                 },
               });
               console.log(result);
-            }}>
-            <Icon name="play" />
-          </Button>}
+            }}
+          />}
       </PlayAudio>
     );
   }
